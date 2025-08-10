@@ -2,24 +2,25 @@ import React, { useState, useEffect, useRef } from "react";
 import "./PresentBirthday.css";
 
 export default function PresentBirthday() {
-  const musicSrc = "/musicas/musica.mp3";
+  // Caminhos usando PUBLIC_URL para funcionar no deploy
+  const musicSrc = `${process.env.PUBLIC_URL}/musicas/musica.mp3`;
   const photos = [
-    "/imagens/imagem1.jpg",
-    "/imagens/imagem3.jpg",
-    "/imagens/imagem4.jpg",
-    "/imagens/imagem5.jpg",
-    "/imagens/imagem6.jpg",
-    "/imagens/imagem7.jpg",
-    "/imagens/imagem9.jpg",
-    "/imagens/imagem11.jpg",
-    "/imagens/imagem12.jpg",
-    "/imagens/imagem13.jpg",
+    `${process.env.PUBLIC_URL}/imagens/imagem1.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem3.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem4.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem5.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem6.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem7.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem9.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem11.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem12.jpg`,
+    `${process.env.PUBLIC_URL}/imagens/imagem13.jpg`,
   ];
 
   const messages = [
     {
       from: "Carlos",
-      text: "Painho, hoje é o seu dia, mas para mim, todos os dias são motivo pra agradecer por ter você na minha vida. Obrigado por cada conselho, cada abraço, cada vez que acreditou em mim e até por cada bronca mesmo as com chinelo na mão 😏. Você é meu herói, meu amigo e também o meu banco particular nas horas de aperto.Que Deus te abençoe com muita saúde, paz e felicidade. Te amo, véio! Feliz Dia dos Pais! ❤️😂👨‍👦",
+      text: "Painho, hoje é o seu dia, mas para mim, todos os dias são motivo pra agradecer por ter você na minha vida. Obrigado por cada conselho, cada abraço, cada vez que acreditou em mim e até por cada bronca mesmo as com chinelo na mão 😏. Você é meu herói, meu amigo e também o meu banco particular nas horas de aperto. Que Deus te abençoe com muita saúde, paz e felicidade. Te amo, véio! Feliz Dia dos Pais! ❤️😂👨‍👦",
     },
     {
       from: "Beatriz",
