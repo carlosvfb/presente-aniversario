@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import "./PresentBirthday.css";
 
 export default function PresentBirthday() {
-  // Caminhos usando PUBLIC_URL para funcionar no deploy
   const musicSrc = `${process.env.PUBLIC_URL}/musicas/musica.mp3`;
+
   const photos = [
     `${process.env.PUBLIC_URL}/imagens/imagem1.jpg`,
     `${process.env.PUBLIC_URL}/imagens/imagem3.jpg`,
@@ -43,12 +43,8 @@ export default function PresentBirthday() {
     if (audioRef.current) {
       audioRef.current
         .play()
-        .then(() => {
-          setPlaying(true);
-        })
-        .catch(() => {
-          setPlaying(false);
-        });
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
     }
   }, []);
 
@@ -61,6 +57,12 @@ export default function PresentBirthday() {
       audioRef.current.play().catch(() => {});
       setPlaying(true);
     }
+  }
+
+  function handleImageError(index) {
+    console.warn(`Imagem não encontrada: ${photos[index]}`);
+    // Pula para a próxima imagem automaticamente
+    setCurrentSlide((s) => (s + 1) % photos.length);
   }
 
   return (
@@ -84,7 +86,8 @@ export default function PresentBirthday() {
                 <img
                   key={i}
                   src={src}
-                  alt="foto"
+                  alt={`foto ${i + 1}`}
+                  onError={() => handleImageError(i)}
                   className={i === currentSlide ? "photo visible" : "photo hidden"}
                 />
               ))}
