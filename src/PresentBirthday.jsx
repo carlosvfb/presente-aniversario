@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./PresentBirthday.css";
 
+// Importa imagens diretamente do src/imagens para o Webpack embutir
+import img1 from "./imagens/imagem1.jpg";
+import img3 from "./imagens/imagem3.jpg";
+import img4 from "./imagens/imagem4.jpg";
+import img5 from "./imagens/imagem5.jpg";
+import img6 from "./imagens/imagem6.jpg";
+import img7 from "./imagens/imagem7.jpg";
+import img9 from "./imagens/imagem9.jpg";
+import img11 from "./imagens/imagem11.jpg";
+import img12 from "./imagens/imagem12.jpg";
+import img13 from "./imagens/imagem13.jpg";
+
 export default function PresentBirthday() {
   const musicSrc = `${process.env.PUBLIC_URL}/musicas/musica.mp3`;
 
-  const photos = [
-    `${process.env.PUBLIC_URL}/imagens/imagem1.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem3.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem4.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem5.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem6.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem7.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem9.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem11.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem12.jpg`,
-    `${process.env.PUBLIC_URL}/imagens/imagem13.jpg`,
-  ];
+  const photos = [img1, img3, img4, img5, img6, img7, img9, img11, img12, img13];
 
   const messages = [
     {
@@ -59,12 +60,6 @@ export default function PresentBirthday() {
     }
   }
 
-  function handleImageError(index) {
-    console.warn(`Imagem não encontrada: ${photos[index]}`);
-    // Pula para a próxima imagem automaticamente
-    setCurrentSlide((s) => (s + 1) % photos.length);
-  }
-
   return (
     <div className="container">
       <audio ref={audioRef} src={musicSrc} preload="none" />
@@ -87,7 +82,6 @@ export default function PresentBirthday() {
                   key={i}
                   src={src}
                   alt={`foto ${i + 1}`}
-                  onError={() => handleImageError(i)}
                   className={i === currentSlide ? "photo visible" : "photo hidden"}
                 />
               ))}
